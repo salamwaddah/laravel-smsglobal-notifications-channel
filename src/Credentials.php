@@ -13,11 +13,21 @@ class Credentials
     private static string $secretKey;
 
     private string $smsPath = '/v2/sms';
-    private string $baseUrl = 'https://api.smsglobal.com';
 
+    /**
+     * @throws \SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration
+     */
     public function __construct()
     {
-        self::setApiKey();
+        $apiKey = Config::get('services.sms_global.api_key');
+        $apiSecretKey = Config::get('services.sms_global.api_secret');
+
+        if (! $apiKey || ! $apiSecretKey) {
+            throw new MissingConfiguration('API key/secret is missing');
+        }
+
+        self::$apiKey = $apiKey;
+        self::$secretKey = $apiSecretKey;
     }
 
     public function getUrl(): string
@@ -34,22 +44,6 @@ class Credentials
         $header = 'MAC id="%s", ts="%s", nonce="%s", mac="%s"';
 
         return sprintf($header, self::$apiKey, $timestamp, $nonce, $hash);
-    }
-
-    /**
-     * @throws \SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration
-     */
-    private static function setApiKey(): void
-    {
-        $apiKey = Config::get('services.sms_global.api_key');
-        $apiSecretKey = Config::get('services.sms_global.api_secret');
-
-        if (! $apiKey || ! $apiSecretKey) {
-            throw new MissingConfiguration('API key/secret is missing');
-        }
-
-        self::$apiKey = (string) $apiKey;
-        self::$secretKey = (string) $apiSecretKey;
     }
 
     /**
