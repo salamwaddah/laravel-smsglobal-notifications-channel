@@ -8,14 +8,6 @@ use SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration;
 
 class CredentialsTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Config::set('services.sms_global.api_key', 'this-is-api-key');
-        Config::set('services.sms_global.api_secret', 'this-is-secret-key');
-    }
-
     /**
      * @test
      */
