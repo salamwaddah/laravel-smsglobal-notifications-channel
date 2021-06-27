@@ -3,6 +3,7 @@
 namespace SalamWaddah\SmsGlobal;
 
 use Illuminate\Support\Facades\Config;
+use SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration;
 
 class Credentials
 {
@@ -16,18 +17,12 @@ class Credentials
 
     public function __construct()
     {
-        self::setApiKey(
-            Config::get('services.sms_global.api_key')
-        );
-
-        self::setSecretKey(
-            Config::get('services.sms_global.api_secret')
-        );
+        self::setApiKey();
     }
 
     public function getUrl(): string
     {
-        return $this->baseUrl.$this->smsPath;
+        return 'https://api.smsglobal.com'.$this->smsPath;
     }
 
     public function getAuthorizationHeader(): string
@@ -38,27 +33,23 @@ class Credentials
         $hash = $this->hashRequest($timestamp, $nonce, $this->smsPath);
         $header = 'MAC id="%s", ts="%s", nonce="%s", mac="%s"';
 
-        return sprintf($header, $this->getApiKey(), $timestamp, $nonce, $hash);
+        return sprintf($header, self::$apiKey, $timestamp, $nonce, $hash);
     }
 
-    private function getApiKey(): string
+    /**
+     * @throws \SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration
+     */
+    private static function setApiKey(): void
     {
-        return self::$apiKey;
-    }
+        $apiKey = Config::get('services.sms_global.api_key');
+        $apiSecretKey = Config::get('services.sms_global.api_secret');
 
-    private static function setApiKey(string $apiKey): void
-    {
-        self::$apiKey = $apiKey;
-    }
+        if (! $apiKey || ! $apiSecretKey) {
+            throw new MissingConfiguration('API key/secret is missing');
+        }
 
-    private static function setSecretKey(string $apiSecretKey): void
-    {
-        self::$secretKey = $apiSecretKey;
-    }
-
-    private function getSecretKey(): string
-    {
-        return self::$secretKey;
+        self::$apiKey = (string) $apiKey;
+        self::$secretKey = (string) $apiSecretKey;
     }
 
     /**
@@ -78,7 +69,7 @@ class Credentials
         $host = 'api.smsglobal.com';
         $string = [$timestamp, $nonce, 'POST', $requestUri, $host, $port, ''];
         $string = sprintf("%s\n", implode("\n", $string));
-        $hash = hash_hmac(self::HASH_ALGO, $string, $this->getSecretKey(), true);
+        $hash = hash_hmac(self::HASH_ALGO, $string, self::$secretKey, true);
 
         return base64_encode($hash);
     }
