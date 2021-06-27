@@ -1,0 +1,39 @@
+{
+  "name": "salamwaddah/laravel-smsglobal-notifications-channel",
+  "description": "todo",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "smsglobal"
+  ],
+  "support": {
+    "issues": "https://github.com/salamwaddah/laravel-smsglobal-notifications-channel/issues",
+    "source": "https://github.com/salamwaddah/laravel-smsglobal-notifications-channel"
+  },
+  "authors": [
+    {
+      "name": "Salam Waddah",
+      "email": "salamwaddah@gmail.com",
+      "homepage": "https://salamwaddah.com/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SalamWaddah\\SmsGlobal\\": "src/",
+      "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.4|^8.0",
+    "illuminate/http": "^8.0",
+    "illuminate/notifications": "^8.0",
+    "illuminate/support": "^8.0",
+    "guzzlehttp/guzzle": "^7.2"
+  },
+  "minimum-stability": "stable",
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
