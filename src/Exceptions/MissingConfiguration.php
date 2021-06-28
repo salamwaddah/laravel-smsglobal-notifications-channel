@@ -2,7 +2,9 @@
 
 namespace SalamWaddah\SmsGlobal\Exceptions;
 
-class MissingConfiguration extends \Exception
+use Exception;
+
+class MissingConfiguration extends Exception
 {
 
 }
