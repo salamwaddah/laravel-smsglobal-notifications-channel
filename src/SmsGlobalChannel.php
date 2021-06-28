@@ -1,11 +1,11 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace SalamWaddah\SmsGlobal;
 
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Config;
 
 class SmsGlobalChannel
 {
@@ -24,7 +24,11 @@ class SmsGlobalChannel
         /* @var SmsGlobalMessage $message */
         $message = $notification->toSmsGlobal($notifiable);
 
-        Log::info(sprintf('SMS GLOBAL: Sending sms to %s: %s', $message->getTo(), $message->getContent()), $this->toArray($message));
+        Log::info(
+            sprintf(
+                'SMS GLOBAL: Sending sms to %s: %s', $message->getTo(), $message->getContent()
+            ), $this->toArray($message)
+        );
 
         if (Config::get('services.sms_global.debug')) {
             Log::debug('SMS GLOBAL: Debug mode is ON.');
