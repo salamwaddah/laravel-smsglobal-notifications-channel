@@ -28,7 +28,8 @@ class ChannelTest extends TestCase
         ];
 
         $this->assertSame(
-            $expected, $channel->toArray($message)
+            $expected,
+            $channel->toArray($message)
         );
     }
 }

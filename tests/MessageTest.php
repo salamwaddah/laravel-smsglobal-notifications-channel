@@ -17,7 +17,8 @@ class MessageTest extends TestCase
         $message->to('1234');
 
         $this->assertSame(
-            '1234', $message->getTo()
+            '1234',
+            $message->getTo()
         );
     }
 
@@ -31,7 +32,8 @@ class MessageTest extends TestCase
         $message->to('1 2 34');
 
         $this->assertSame(
-            '1234', $message->getTo()
+            '1234',
+            $message->getTo()
         );
     }
 
@@ -45,7 +47,8 @@ class MessageTest extends TestCase
         $message = new SmsGlobalMessage();
 
         $this->assertSame(
-            'Salam', $message->getOrigin()
+            'Salam',
+            $message->getOrigin()
         );
     }
 
@@ -59,7 +62,8 @@ class MessageTest extends TestCase
         $message->content('hi this is a message');
 
         $this->assertSame(
-            'hi this is a message', $message->getContent()
+            'hi this is a message',
+            $message->getContent()
         );
     }
 }

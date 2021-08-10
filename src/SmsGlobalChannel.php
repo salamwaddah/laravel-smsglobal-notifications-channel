@@ -1,4 +1,6 @@
-<?php /** @noinspection ALL */
+<?php
+
+/** @noinspection ALL */
 
 namespace SalamWaddah\SmsGlobal;
 
@@ -26,8 +28,11 @@ class SmsGlobalChannel
 
         Log::info(
             sprintf(
-                'SMS GLOBAL: Sending sms to %s: %s', $message->getTo(), $message->getContent()
-            ), $this->toArray($message)
+                'SMS GLOBAL: Sending sms to %s: %s',
+                $message->getTo(),
+                $message->getContent()
+            ),
+            $this->toArray($message)
         );
 
         if (Config::get('services.sms_global.debug')) {
