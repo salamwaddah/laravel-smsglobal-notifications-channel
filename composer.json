@@ -30,8 +30,7 @@
 		"illuminate/http": "^7.0 || ^8.0 || ^9.0 || ^10.0",
 		"illuminate/notifications": "^7.0 || ^8.0 || ^9.0 || ^10.0",
 		"illuminate/support": "^7.0 || ^8.0 || ^9.0 || ^10.0",
-		"guzzlehttp/guzzle": "^6.5 || ^7.2",
-		"hellochef-me/php-styles": "^1.0"
+		"guzzlehttp/guzzle": "^6.5 || ^7.2"
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
@@ -40,14 +39,6 @@
 		"pcov/clobber": "^2.0"
 	},
 	"scripts": {
-		"post-update-cmd": [
-			"cp vendor/hellochef-me/php-styles/pre-commit .git/hooks/pre-commit",
-			"chmod a+x .git/hooks/pre-commit"
-		],
-		"post-install-cmd": [
-			"cp vendor/hellochef-me/php-styles/pre-commit .git/hooks/pre-commit",
-			"chmod a+x .git/hooks/pre-commit"
-		]
 	},
 	"version": "0.4.0"
 }
