@@ -1,4 +1,10 @@
-Use this package to send SMS with [SmsGlobal](https://www.smsglobal.com/) in `Laravel 7` or `Laravel 8`
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/salamwaddah/laravel-smsglobal-notifications-channel.svg?style=flat-square)](https://packagist.org/packages/salamwaddah/laravel-smsglobal-notifications-channel)
+[![Total Downloads](https://img.shields.io/packagist/dt/salamwaddah/laravel-smsglobal-notifications-channel?style=flat-square)](https://packagist.org/packages/salamwaddah/laravel-smsglobal-notifications-channel)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+
+# Laravel SMSGlobal
+
+Use this package to send SMS with [SmsGlobal](https://www.smsglobal.com/)
 
 ## Installation
 
@@ -23,7 +29,7 @@ In your `services.php` config file add the following configs.
 
 ## Debug Mode
 
-Debug mode is turn on by default, which means SMS will not be actually sent, instead only a log record will be added
+Debug mode is on by default, which means SMS will not be actually sent, instead only a log record will be added
 to `/storage/logs/laravel.log`
 
 In your `services.php` change the value of `sms_global.debug` to `false`
@@ -63,7 +69,8 @@ class OrderPaid extends Notification
 
 ### On demand notification
 
-You can utilize Laravel on-demand notification facade to send SMS directly to a phone number without having to store a user in your application.
+You can utilize Laravel on-demand notification facade to send SMS directly to a phone number without having to store a
+user in your application.
 
 ```php
 Notification::send(
@@ -75,7 +82,8 @@ Notification::send(
 The notifiable argument in `toSmsGlobal` of your notification class should expect the same data type you passed to
 the `Notification` facade.
 
-In this example, we passed the phone number as a `string` because we don't have a "user" and so `toSmsGlobal` should expect a `string`.
+In this example, we passed the phone number as a `string` because we don't have a "user" and so `toSmsGlobal` should
+expect a `string`.
 
 ```php
 public function toSmsGlobal(string $phoneNumber): SmsGlobalMessage
