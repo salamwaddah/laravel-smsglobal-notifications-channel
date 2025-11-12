@@ -4,7 +4,7 @@ namespace Tests;
 
 use Illuminate\Support\Facades\Config;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+final class TestCase extends \Orchestra\Testbench\TestCase
 {
     protected function setUp(): void
     {

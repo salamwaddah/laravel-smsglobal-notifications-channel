@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Config;
 use SalamWaddah\SmsGlobal\Credentials;
 use SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration;
 
-class CredentialsTest extends TestCase
+final class CredentialsTest extends TestCase
 {
     #[Test]
     public function not_setting_api_key_throws_exception(): void

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Config;
 use SalamWaddah\SmsGlobal\SmsGlobalChannel;
 use SalamWaddah\SmsGlobal\SmsGlobalMessage;
 
-class ChannelTest extends TestCase
+final class ChannelTest extends TestCase
 {
     #[Test]
     public function to_array_has_correct_content(): void
