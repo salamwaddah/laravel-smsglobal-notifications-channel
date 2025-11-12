@@ -39,6 +39,5 @@
 	},
 	"scripts": {
 		"test": "vendor/bin/phpunit"
-	},
-	"version": "1.0.0"
+	}
 }
