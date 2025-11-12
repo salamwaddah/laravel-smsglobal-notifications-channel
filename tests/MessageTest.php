@@ -6,7 +6,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Support\Facades\Config;
 use SalamWaddah\SmsGlobal\SmsGlobalMessage;
 
-class MessageTest extends TestCase
+final class MessageTest extends TestCase
 {
     #[Test]
     public function to_can_be_set(): void
