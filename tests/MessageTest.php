@@ -12,7 +12,7 @@ class MessageTest extends TestCase
      */
     public function to_can_be_set(): void
     {
-        $message = new SmsGlobalMessage();
+        $message = new SmsGlobalMessage;
 
         $message->to('1234');
 
@@ -27,7 +27,7 @@ class MessageTest extends TestCase
      */
     public function setting_to_removes_spaces(): void
     {
-        $message = new SmsGlobalMessage();
+        $message = new SmsGlobalMessage;
 
         $message->to('1 2 34');
 
@@ -44,7 +44,7 @@ class MessageTest extends TestCase
     {
         Config::set('services.sms_global.origin', 'Salam');
 
-        $message = new SmsGlobalMessage();
+        $message = new SmsGlobalMessage;
 
         $this->assertSame(
             'Salam',
@@ -57,7 +57,7 @@ class MessageTest extends TestCase
      */
     public function content_can_be_set(): void
     {
-        $message = new SmsGlobalMessage();
+        $message = new SmsGlobalMessage;
 
         $message->content('hi this is a message');
 

@@ -10,6 +10,7 @@ class Credentials
     public const HASH_ALGO = 'sha256';
 
     private static string $apiKey;
+
     private static string $secretKey;
 
     private string $smsPath = '/v2/sms';
@@ -50,11 +51,9 @@ class Credentials
      * Hashes a request using the API secret, for use in the Authorization
      * header.
      *
-     * @param int    $timestamp  Unix timestamp of request time
-     * @param string $nonce      Random unique string
-     * @param string $requestUri Request URI (e.g. /v2/sms/)
-     *
-     * @return string
+     * @param  int  $timestamp  Unix timestamp of request time
+     * @param  string  $nonce  Random unique string
+     * @param  string  $requestUri  Request URI (e.g. /v2/sms/)
      */
     private function hashRequest(int $timestamp, string $nonce, string $requestUri): string
     {

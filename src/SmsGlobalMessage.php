@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Config;
 class SmsGlobalMessage
 {
     private string $to;
+
     private string $content;
 
     public function to(string $to): self
