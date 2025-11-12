@@ -23,10 +23,9 @@ class SmsGlobalChannel
      */
     public function send($notifiable, Notification $notification): void
     {
-        if (! $notifiable->routeNotificationFor('sms_global', $notification)) {
+        if (method_exists($notifiable, 'routeNotificationForSmsGlobal') && !$notifiable->routeNotificationFor('sms_global', $notification)) {
             return;
         }
-
         /* @var SmsGlobalMessage $message */
         $message = $notification->toSmsGlobal($notifiable);
 
