@@ -15,8 +15,8 @@ class ChannelTest extends TestCase
     {
         Config::set('services.sms_global.origin', 'Salam');
 
-        $channel = new SmsGlobalChannel();
-        $message = new SmsGlobalMessage();
+        $channel = new SmsGlobalChannel;
+        $message = new SmsGlobalMessage;
 
         $message->to('+971555555555');
         $message->content('hi there');

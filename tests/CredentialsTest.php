@@ -17,12 +17,12 @@ class CredentialsTest extends TestCase
         Config::set('services.sms_global.api_secret');
 
         $this->expectExceptionObject(
-            new MissingConfiguration()
+            new MissingConfiguration
         );
 
         $this->expectExceptionMessage('API key/secret is missing');
 
-        new Credentials();
+        new Credentials;
     }
 
     /**
@@ -30,7 +30,7 @@ class CredentialsTest extends TestCase
      */
     public function credentials_api_url_is_correct(): void
     {
-        $credentials = new Credentials();
+        $credentials = new Credentials;
 
         $this->assertSame(
             'https://api.smsglobal.com/v2/sms',
@@ -43,7 +43,7 @@ class CredentialsTest extends TestCase
      */
     public function auth_header_contains_required_keys(): void
     {
-        $credentials = new Credentials();
+        $credentials = new Credentials;
 
         $header = $credentials->getAuthorizationHeader();
 

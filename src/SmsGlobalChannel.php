@@ -15,7 +15,7 @@ class SmsGlobalChannel
 
     public function __construct()
     {
-        $this->credentials = new Credentials();
+        $this->credentials = new Credentials;
     }
 
     /**
