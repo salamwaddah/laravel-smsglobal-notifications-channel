@@ -2,14 +2,13 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Support\Facades\Config;
 use SalamWaddah\SmsGlobal\SmsGlobalMessage;
 
 class MessageTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function to_can_be_set(): void
     {
         $message = new SmsGlobalMessage();
@@ -22,9 +21,7 @@ class MessageTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setting_to_removes_spaces(): void
     {
         $message = new SmsGlobalMessage();
@@ -37,9 +34,7 @@ class MessageTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getting_origin_matches_config(): void
     {
         Config::set('services.sms_global.origin', 'Salam');
@@ -52,9 +47,7 @@ class MessageTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function content_can_be_set(): void
     {
         $message = new SmsGlobalMessage();

@@ -2,15 +2,14 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Support\Facades\Config;
 use SalamWaddah\SmsGlobal\Credentials;
 use SalamWaddah\SmsGlobal\Exceptions\MissingConfiguration;
 
 class CredentialsTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function not_setting_api_key_throws_exception(): void
     {
         Config::set('services.sms_global.api_key');
@@ -25,9 +24,7 @@ class CredentialsTest extends TestCase
         new Credentials();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function credentials_api_url_is_correct(): void
     {
         $credentials = new Credentials();
@@ -38,9 +35,7 @@ class CredentialsTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function auth_header_contains_required_keys(): void
     {
         $credentials = new Credentials();
