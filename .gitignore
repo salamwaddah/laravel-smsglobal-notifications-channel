@@ -1,6 +1,6 @@
 /html/
 /vendor/
 .idea
-.phpunit.result.cache
+/.phpunit.cache
 composer.phar
 composer.lock
