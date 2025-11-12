@@ -23,6 +23,10 @@ class SmsGlobalChannel
      */
     public function send($notifiable, Notification $notification): void
     {
+        if (! $notifiable->routeNotificationFor('sms_global', $notification)) {
+            return;
+        }
+
         /* @var SmsGlobalMessage $message */
         $message = $notification->toSmsGlobal($notifiable);
 
